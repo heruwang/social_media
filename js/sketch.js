@@ -7,10 +7,20 @@ let nodeData; // object we will push to firebase
 let fbData; // data we pull from firebase
 let fbDataArray; // firebase data values converted to an array
 let database; // reference to our firebase database
-let folderName = 'messages'; // name of folder you create in db
+let folderName = 'demo-messages'; // name of folder you create in db
+let messageInput;
+let sendMessageBtn;
 
 function setup() {
   noCanvas();
+
+  //messageInput = select("#messageInput");
+  messageInput = document.querySelector("#messageInput");
+  sendMessageBtn = document.querySelector("#sendMessageBtn");
+
+  sendMessageBtn.addEventListener('click', sendMessage);
+
+
   // Initialize firebase
 // support for Firebase Realtime Database 4 web here: https://firebase.google.com/docs/database/web/start
 // Copy and paste your config here (replace object commented out)
@@ -51,4 +61,20 @@ ref.on('value', gotData, errData);
 
 function draw() {
 
+}
+function sendMessage(){
+  if(messageInput.value){
+  let timestamp = Date.now();
+
+  nodeData ={
+    messageText: messageInput.value,
+    timestamp: timestamp,
+  }
+
+   createNode(folderName, timestamp, nodeData);
+   console.log("sent message:");
+   console.log(nodeData);
+ } else{
+   alert("uh oh. type message first");
+ }
 }
