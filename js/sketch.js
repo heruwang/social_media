@@ -136,15 +136,15 @@ function sendAgain(){
   receiveDiv.style.display = 'none';
   sendDiv.style.display = 'block';
 }
-function shuffleArray(array){
+function shuffleArray(_array){
   // iterate backwards through an array
-for (let i = array.length - 1; i > 0; i--) {
+for (let i = _array.length - 1; i > 0; i--) {
 
   // grab random index from 0 to i
   let randomIndex = Math.floor(Math.random() * (i + 1));
 
   // swap elements array[i] and array[j]
-  [array[i], array[randomIndex]] = [array[randomIndex], array[i]]; // using "destructuring assignment" syntax
+  [_array[i], _array[randomIndex]] = [_array[randomIndex], _array[i]]; // using "destructuring assignment" syntax
 
   // same can be written as:
   // let arrayItem = array[i]; // array item in original position array[i]
